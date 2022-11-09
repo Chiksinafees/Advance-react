@@ -1,7 +1,7 @@
-
 import Expense from "./component/expenses/ExpenseItem";
 import Card from "./component/UI/Card";
 import "./App.css";
+import NewExpense from "./component/NewExpense/NewExpense";
 
 const App = () => {
   const Sampleexpense = [
@@ -34,21 +34,25 @@ const App = () => {
       LocationOfExpenditure: "GAZIABAD",
     },
   ];
+
   return (
-    <Card className="expense123">
-      {Sampleexpense.map((Sample) => {
-        return (
-          <div key={Sample.id}>
-            <Expense
-              title={Sample.title}
-              date={Sample.date}
-              amount={Sample.amount}
-              LocationOfExpenditure={Sample.LocationOfExpenditure}
-            />
-          </div>
-        );
-      })}
-    </Card>
+    <div>
+      <NewExpense />
+      <Card className="expense123">
+        {Sampleexpense.map((Sample) => {
+          return (
+            <div key={Sample.id}>
+              <Expense
+                title={Sample.title}
+                date={Sample.date}
+                amount={Sample.amount}
+                LocationOfExpenditure={Sample.LocationOfExpenditure}
+              />
+            </div>
+          );
+        })}
+      </Card>
+    </div>
   );
 };
 

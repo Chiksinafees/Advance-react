@@ -14,7 +14,7 @@ const Expense = (props) => {
   };
   const amountHandler = () => {
     setAmount("100");
-   // console.log(amount);
+    // console.log(amount);
   };
 
   const deleteHandler = () => {
