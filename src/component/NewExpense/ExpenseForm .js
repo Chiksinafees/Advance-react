@@ -2,23 +2,26 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  const [enteredtitle, setEnteredtitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  const [userInput, setUserInput] = useState({
+    enteredtitle: "",
+    enteredAmount: "",
+    enteredDate: "",
+  });                          // it's a alternative way to use single state instead of multiple
 
   const titleHandler = (e) => {
-    e.preventDefault();
-    setEnteredtitle(e.target.value);
+    setUserInput((prevState) => {
+      return { ...prevState, enteredtitle: e.target.value };   //  we don't use setUserInput ({...prevState, enteredtitle: e.target.value })
+    });
   };
-
   const amountHandler = (e) => {
-    e.preventDefault();
-    setEnteredAmount(e.target.value);
+    setUserInput((prevState) => {
+      return { ...prevState, enteredAmount: e.target.value };
+    });
   };
-
   const dateHandler = (e) => {
-    e.preventDefault();
-    setEnteredDate(e.target.value);
+    setUserInput((prevState) => {
+      return { ...prevState, enteredDate: e.target.value };
+    });
   };
 
   return (
