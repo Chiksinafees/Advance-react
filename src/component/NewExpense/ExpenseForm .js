@@ -2,30 +2,33 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  const [userInput, setUserInput] = useState({
-    enteredtitle: "",
-    enteredAmount: "",
-    enteredDate: "",
-  });                          // it's a alternative way to use single state instead of multiple
+  const [enteredtitle, setEnteredtitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
 
   const titleHandler = (e) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredtitle: e.target.value };   //  we don't use setUserInput ({...prevState, enteredtitle: e.target.value })
-    });
-  };
-  const amountHandler = (e) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredAmount: e.target.value };
-    });
-  };
-  const dateHandler = (e) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredDate: e.target.value };
-    });
+    setEnteredtitle(e.target.value);
   };
 
+  const amountHandler = (e) => {
+    setEnteredAmount(e.target.value);
+  };
+
+  const dateHandler = (e) => {
+    setEnteredDate(e.target.value);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const obj = {
+      title: enteredtitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+    console.log(obj)
+  };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls ">
         <div className="new-expense__control">
           <label>Title</label>
@@ -50,7 +53,7 @@ const ExpenseForm = () => {
           />
         </div>
         <div className="new-expense__actions">
-          <button>Add Expense</button>
+          <button type="submit">Add Expense</button>
         </div>
       </div>
     </form>
