@@ -10,11 +10,9 @@ const Expense = (props) => {
 
   const titleHandler = () => {
     setTitle("just updated");
-    //console.log(title);
   };
   const amountHandler = () => {
     setAmount("100");
-    // console.log(amount);
   };
 
   const deleteHandler = () => {
@@ -32,7 +30,7 @@ const Expense = (props) => {
         <ExpenseDetails amount={amount} />
       </div>
       <button onClick={titleHandler}>Change Title</button>
-      <button onClick={amountHandler}>Chnge amount</button>
+      <button onClick={amountHandler}>Change amount</button>
       <button onClick={deleteHandler}>Delete Expense </button>
     </Card>
   );

@@ -2,6 +2,7 @@ import Expense from "./component/expenses/ExpenseItem";
 import Card from "./component/UI/Card";
 import "./App.css";
 import NewExpense from "./component/NewExpense/NewExpense";
+import React, { useState } from "react";
 
 const App = () => {
   const Sampleexpense = [
@@ -35,11 +36,18 @@ const App = () => {
     },
   ];
 
+  const [exp, setExp] = useState(Sampleexpense);
+
+  const onSave2Handler = (obj2) => {
+    const newSample = [obj2, ...exp];
+    setExp(newSample);
+  };
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onSaveData2={onSave2Handler} />
       <Card className="expense123">
-        {Sampleexpense.map((Sample) => {
+        {exp.map((Sample) => {
           return (
             <div key={Sample.id}>
               <Expense
