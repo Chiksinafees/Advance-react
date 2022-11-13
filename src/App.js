@@ -3,9 +3,10 @@ import Card from "./component/UI/Card";
 import "./App.css";
 import NewExpense from "./component/NewExpense/NewExpense";
 import React, { useState } from "react";
+import ExpenseFilter from "./component/expenses/ExpenseFilter";
 
 const App = () => {
-  const Sampleexpense = [
+  const arr = [
     {
       id: "a1",
       title: "Fridge",
@@ -36,21 +37,32 @@ const App = () => {
     },
   ];
 
-  const [exp, setExp] = useState(Sampleexpense);
+  const [exp, setExp] = useState(arr);
+  const [filterYear, setFilterYear] = useState("2020");
 
   const onSave2Handler = (obj2) => {
-    const newSample = [obj2, ...exp];
-    setExp(newSample);
+    setExp((prevArr) => {
+      return [obj2, ...prevArr];
+    });
+  };
+
+  const filterChangeHandler = (selectedYear) => {
+    setFilterYear(selectedYear);
   };
 
   return (
     <div>
       <NewExpense onSaveData2={onSave2Handler} />
       <Card className="expense123">
+        <ExpenseFilter
+          selected={filterYear}
+          onChangeFilter={filterChangeHandler}
+        />
         {exp.map((Sample) => {
           return (
             <div key={Sample.id}>
               <Expense
+                id={Sample.id}
                 title={Sample.title}
                 date={Sample.date}
                 amount={Sample.amount}
