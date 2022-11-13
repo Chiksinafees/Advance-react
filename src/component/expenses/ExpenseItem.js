@@ -4,21 +4,18 @@ import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
 import Card from "../UI/Card";
 
-const Expense = (props) => {
-  // props=full array details
-
-  const [title, setTitle] = useState(props.title); //  title= old title     setTitle= new value
+const ExpenseItems = (props) => {
+  const [title, setTitle] = useState(props.title);
   const [amount, setAmount] = useState(props.amount);
 
   const titleHandler = () => {
     setTitle("just updated");
   };
   const amountHandler = () => {
-    setAmount("100");
+    setAmount(100);
   };
-
   const deleteHandler = () => {
-    // console.log(`${props.id} is called to delete called`)
+    //console.log(`${props.title} is called to delete`)
   };
 
   return (
@@ -28,24 +25,20 @@ const Expense = (props) => {
       <h2>{title}</h2>
       <h2>{props.LocationOfExpenditure}</h2>
 
-      <div>
-        <ExpenseDetails amount={amount} />
-      </div>
-      <button onClick={titleHandler}>Change Title</button>
-      <button onClick={amountHandler}>Change amount</button>
-      <button onClick={deleteHandler}>Delete Expense </button>
+      <ExpenseDetails amount={amount} />
+      <button onClick={titleHandler}>Change title</button>
+      <button onClick={amountHandler}>Change Amount</button>
+      <button onClick={deleteHandler}>delete expense</button>
     </Card>
   );
-  // just did for checking how createElement work
-
-  //   React.createElement("div",{ className: "expense-item" },
-  //   React.createElement(ExpenseDate, { date: props.date }),
-  //   React.createElement("h2", {}, props.title),
-  //   React.createElement("h2", {}, props.LocationOfExpenditure),
-  //   React.createElement("div",{},
-  //   React.createElement(ExpenseDetails, { amount: props.amount })
-  //   )
-  // );
+  //just did for checking how createElement work
+  //     React.createElement("div",{className:"expense-item"},
+  //     React.createElement(ExpenseDate,{date:props.date}),
+  //     React.createElement("h2",{}, props.title),
+  //     React.createElement("h2",{}, props.locationOfExpenditure),
+  //     React.createElement("div",{},
+  //     React.createElement(ExpenseDetails,{amount:props.amount})
+  //     )
+  //     )
 };
-
-export default Expense;
+export default ExpenseItems;

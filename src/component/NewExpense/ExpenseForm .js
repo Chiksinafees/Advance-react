@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
-  const [enteredtitle, setEnteredtitle] = useState("");
+  const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
   const titleHandler = (e) => {
-    setEnteredtitle(e.target.value);
+    setEnteredTitle(e.target.value);
   };
 
   const amountHandler = (e) => {
@@ -20,23 +20,30 @@ const ExpenseForm = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     const obj = {
-      title: enteredtitle,
+      title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    props.onSaveData(obj)      // data sent to newexpense
-    
-    setEnteredtitle("");
+    props.onSaveData(obj);
+
+    setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
   };
+
   return (
     <form onSubmit={submitHandler}>
-      <div className="new-expense__controls ">
+      <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" value={enteredtitle} onChange={titleHandler} required/>
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleHandler}
+            required
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -57,15 +64,14 @@ const ExpenseForm = (props) => {
             max="2022-11-31"
             value={enteredDate}
             onChange={dateHandler}
-             required
+            required
           />
         </div>
-        <div className="new-expense__actions">
-          <button type="submit">Add Expense</button>
-        </div>
+      </div>
+      <div className="new-expense__actions">
+        <button type="submit">Add Expense</button>
       </div>
     </form>
   );
 };
-
 export default ExpenseForm;
