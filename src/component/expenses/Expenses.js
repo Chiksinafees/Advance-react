@@ -14,21 +14,36 @@ function Expenses(props) {
     return expenses.date.getFullYear().toString() === filterYear;
   });
 
+  let selectedExpenses = (
+    <p className="null-expense">
+      <b>No Expenses added</b>
+    </p>
+  );
+
+  if (filtereExpenseYear.length > 0) {
+    selectedExpenses = filtereExpenseYear.map((sample) => (
+      <ExpenseItem
+        key={sample.id}
+        title={sample.title}
+        date={sample.date}
+        amount={sample.amount}
+        LocationOfExpenditure={sample.LocationOfExpenditure}
+      />
+    ));
+  }
+
   return (
     <Card className="expense123">
       <ExpenseFilter
         selected={filterYear}
         onChangeFilter={FilterChangeHandler}
       />
-      {filtereExpenseYear.map((sample) => (
-        <ExpenseItem
-          key={sample.id}
-          title={sample.title}
-          date={sample.date}
-          amount={sample.amount}
-          LocationOfExpenditure={sample.LocationOfExpenditure}
-        />
-      ))}
+      {selectedExpenses}
+      {filtereExpenseYear.length === 1 && (
+        <p className="null-expense">
+          <b>Only single Expense here.Please add more...</b>
+        </p>
+      )}
     </Card>
   );
 }
