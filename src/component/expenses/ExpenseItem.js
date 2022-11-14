@@ -6,31 +6,31 @@ import Card from "../UI/Card";
 
 const ExpenseItems = (props) => {
   const [title, setTitle] = useState(props.title);
-  const [amount, setAmount] = useState(props.amount);
+  // const [amount, setAmount] = useState(props.amount);
 
   const titleHandler = () => {
     setTitle("just updated");
   };
-  const amountHandler = () => {
-    setAmount(100);
-  };
+  // const amountHandler = () => {
+  //   setAmount(100);
+
+  // };
   const deleteHandler = () => {
     //console.log(`${props.title} is called to delete`)
   };
 
   return (
     <li>
-    <Card className="expense-item">
-      <ExpenseDate date={props.date} />
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
 
-      <h2>{title}</h2>
-      <h2>{props.LocationOfExpenditure}</h2>
+        <h2>{title}</h2>
+        <h2>{props.LocationOfExpenditure}</h2>
 
-      <ExpenseDetails amount={amount} />
-      <button onClick={titleHandler}>Change title</button>
-      <button onClick={amountHandler}>Change Amount</button>
-      <button onClick={deleteHandler}>delete expense</button>
-    </Card>
+        <ExpenseDetails amount={props.amount} />
+        <button onClick={titleHandler}>Change title</button>
+        <button onClick={deleteHandler}>delete expense</button>
+      </Card>
     </li>
   );
   //just did for checking how createElement work
