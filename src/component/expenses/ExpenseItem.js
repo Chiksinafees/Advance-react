@@ -19,6 +19,7 @@ const ExpenseItems = (props) => {
   };
 
   return (
+    <li>
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
 
@@ -30,6 +31,7 @@ const ExpenseItems = (props) => {
       <button onClick={amountHandler}>Change Amount</button>
       <button onClick={deleteHandler}>delete expense</button>
     </Card>
+    </li>
   );
   //just did for checking how createElement work
   //     React.createElement("div",{className:"expense-item"},
